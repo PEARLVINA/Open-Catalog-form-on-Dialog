@@ -1,0 +1,19 @@
+// Use this if you need to pre-populate the catalog form in dialog box
+
+function onLoad() {
+    //Use the 'getParameterValue' function below to get the parameter values from the URL
+    var reqid = getParameterValue('sysparm_tsifirewall');
+    if (reqid) {
+        //Put the name of the variable you're trying to populate here
+		g_form.setValue('firewall_request', reqid); 
+    }
+}
+
+function getParameterValue(name) {
+    var url = document.URL.parseQuery();
+    if (url[name]) {
+        return decodeURI(url[name]);
+    } else {
+        return;
+    }
+}
