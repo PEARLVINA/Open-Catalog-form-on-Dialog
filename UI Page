@@ -1,0 +1,32 @@
+// HTML:
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+// Get current record's sys_ID from the UI action 
+<g2:evaluate var="jvar_tsi" expression="RP.getWindowProperties().get('tsifirewall')" />
+
+// BUTTONS 
+<table style="width:100%">
+	<td colspan="2" align="right">
+		<button id="close" onclick="onClose()" type="button">$[gs.getMessage("Close")]</button>
+		<button id="cancel" onclick="onCancel()" type="button">$[gs.getMessage("Cancel")]</button>
+	</td>
+
+</table>
+<iframe src="/com.glideapp.servicecatalog_cat_item_view.do?sysparm_id=<catalog_sysid>${AMP}sysparm_tsifirewall=$[jvar_tsi]" scrolling="yes" style="height:500px; width:100%"/>
+    
+</j:jelly>
+
+
+// Client script
+// When close button is clicked set current record's field values then close dialog box
+function onClose() {
+    g_form.setValue("variables.tsi_request_submitted", 'true');
+    g_form.save();
+    GlideDialogWindow.get().destroy(); //Close the dialog window
+}
+
+// When Cancel button is clicked close the dialog box
+function onCancel() {
+    GlideDialogWindow.get().destroy(); //Close the dialog window
+}
