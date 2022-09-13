@@ -1,0 +1,13 @@
+// Onclick: click() // Use for function on the script
+// Script:
+
+function click() {
+    
+    var gdw = new GlideDialogWindow("<name of ui page>");
+    gdw.setTitle(""); //Set the dialog title
+    gdw.setSize(1050,100);
+	  // gdw.setPreference('tsifirewall', g_form.getUniqueValue()); // Get current record's sys_id
+  	// gdw.removeCloseDecoration(); // Remove "x" button on the dialog box
+    gdw.render(); //Open the dialog
+    
+}
